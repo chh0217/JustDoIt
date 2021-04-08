@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @description
  */
 @Slf4j
-@Component
+//@Component
 public class TaskExecute {
 
 

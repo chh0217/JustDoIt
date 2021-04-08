@@ -13,7 +13,7 @@ import org.springframework.web.context.request.async.DeferredResult;
  * @description
  */
 @Slf4j
-@Component
+//@Component
 public class TaskQueue {
 
 

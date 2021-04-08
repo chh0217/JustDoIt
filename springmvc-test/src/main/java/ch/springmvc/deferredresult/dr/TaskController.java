@@ -14,7 +14,7 @@ import org.springframework.web.context.request.async.DeferredResult;
  * @description
  */
 @Slf4j
-@RestController
+//@RestController
 public class TaskController {
 
     //超时结果
