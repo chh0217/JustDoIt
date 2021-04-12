@@ -12,7 +12,8 @@ import ch.springmvc.po.MonitorDealDTO;
 @MonitorAnnotation(monitorEnum = MonitorEnum.MONITOR_2)
 public class MonitorDealB implements MonitorDeal {
     @Override
-    public void deal(MonitorDealDTO dto) {
+    public String deal(MonitorDealDTO dto) {
         System.out.println("我是业务监控处理类B");
+        return null;
     }
 }

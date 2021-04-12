@@ -18,7 +18,7 @@ import java.util.List;
 public class MonitorDealA implements MonitorDeal {
 
     @Override
-    public void deal(MonitorDealDTO dto) {
+    public String deal(MonitorDealDTO dto) {
         System.out.println();
         System.out.println("我是监控业务处理类A");
         List<Object> list = dto.getParameterList();
@@ -26,5 +26,6 @@ public class MonitorDealA implements MonitorDeal {
         Object result = dto.getReturnValue();
         System.out.println(list);
         System.out.println(result);
+        return null;
     }
 }

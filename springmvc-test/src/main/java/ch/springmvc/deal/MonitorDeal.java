@@ -13,5 +13,5 @@ public interface MonitorDeal {
     /**
      * 业务监控处理
      */
-    void deal(MonitorDealDTO dealDTO);
+    String deal(MonitorDealDTO dealDTO);
 }
