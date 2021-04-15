@@ -26,7 +26,7 @@ import java.util.Objects;
  */
 @Aspect
 @Component
-@Order(Ordered.HIGHEST_PRECEDENCE + 1)
+@Order(Ordered.HIGHEST_PRECEDENCE + 10)
 @Slf4j
 public class MonitorAspect {
 
