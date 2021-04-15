@@ -20,6 +20,7 @@ import org.springframework.transaction.event.TransactionalEventListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author 云岩
@@ -47,7 +48,7 @@ public class MonitorListener //implements ApplicationListener<MonitorEvent>
         }
         MonitorEnum monitorEnum = monitorEvent.getMonitorEnum();
         MonitorDeal monitorDeal = monitorDealMap.get(monitorEnum.getCode());
-        if (null == monitorDeal) {
+        if (Objects.isNull(monitorDeal)) {
             return;
         }
         log.info("开启监控 {}", monitorEnum.getDesc());
@@ -55,6 +56,9 @@ public class MonitorListener //implements ApplicationListener<MonitorEvent>
         dto.setParameterList(monitorEvent.getParameterList());
         dto.setReturnValue(monitorEvent.getReturnValue());
         monitorDeal.deal(dto);
+
+        //todo  dingding
+
 //        System.out.println("监听到了methodA变动");
 //        List<Object> list = monitorEvent.getParameterList();
 //        MonitorTestDTO dto = (MonitorTestDTO) list.get(0);
@@ -78,7 +82,7 @@ public class MonitorListener //implements ApplicationListener<MonitorEvent>
         for (Map.Entry<String, MonitorDeal> c : map.entrySet()) {
             MonitorDeal m = c.getValue();
             MonitorAnnotation anno = m.getClass().getAnnotation(MonitorAnnotation.class);
-            if (null != anno) {
+            if (Objects.nonNull(anno)) {
                 monitorDealMap.put(anno.monitorEnum().getCode(), m);
             }
         }

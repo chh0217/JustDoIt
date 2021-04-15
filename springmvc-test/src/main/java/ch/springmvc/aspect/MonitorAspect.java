@@ -17,6 +17,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author 云岩
@@ -48,7 +49,7 @@ public class MonitorAspect {
             } else {
                 log.info("监控 目标方法:{} 无入参", methodName, sb.toString());
             }
-            if (null != returnValue) {
+            if (Objects.nonNull(returnValue)) {
                 log.info("监控 目标方法:{} 返回结果 {}", methodName, returnValue.toString());
             } else {
                 log.info("监控 目标方法:{} 无返回结果", methodName);
@@ -59,12 +60,12 @@ public class MonitorAspect {
                     parameterList.add(a);
                 }
             }
-            if (null == monitorAnnotation.monitorEnum()) {
+            if (Objects.isNull(monitorAnnotation.monitorEnum())) {
                 return;
             }
             applicationContext.publishEvent(new MonitorEvent(joinPoint.getTarget(), monitorAnnotation.monitorEnum(), parameterList, returnValue));
         } catch (Exception e) {
-            log.error("业务监控异常 {}",Throwables.getStackTraceAsString(e));
+            log.error("业务监控异常 {}", Throwables.getStackTraceAsString(e));
         }
     }
 }
