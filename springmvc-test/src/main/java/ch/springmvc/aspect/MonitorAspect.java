@@ -43,7 +43,7 @@ public class MonitorAspect {
             StringBuilder sb = new StringBuilder();
             if (ArrayUtils.isNotEmpty(argNames)) {
                 for (int i = 0; i < argNames.length; i++) {
-                    sb.append("参数名称:").append(argNames[i]).append(" 值:").append(null != args[i] ? args[i].toString() : "");
+                    sb.append("参数名称:").append(argNames[i]).append(" 值:").append(Objects.nonNull(args[i]) ? args[i].toString() : "");
                 }
                 log.info("监控 目标方法:{} 入参 {}", methodName, sb.toString());
             } else {
@@ -56,9 +56,7 @@ public class MonitorAspect {
             }
             List<Object> parameterList = Lists.newArrayList();
             if (ArrayUtils.isNotEmpty(args)) {
-                for (Object a : args) {
-                    parameterList.add(a);
-                }
+                parameterList = Lists.newArrayList(args);
             }
             if (Objects.isNull(monitorAnnotation.monitorEnum())) {
                 return;
