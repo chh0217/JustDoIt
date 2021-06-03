@@ -40,6 +40,12 @@ public class Test {
 
         List<Integer> aList = Lists.newArrayList(1);
         System.out.println(aList.subList(0,1));
+        Integer a = 1/8;
+        Integer b = 2/8;
+        Integer c = 9/8;
+        System.out.println(a);
+        System.out.println(b);
+
     }
 
     static boolean test(List<String> nameSlice, int length) {
